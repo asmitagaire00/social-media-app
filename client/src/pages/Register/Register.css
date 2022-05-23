@@ -1,0 +1,68 @@
+.register{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+ .register-wrapper{
+ display: flex;
+ width: 60%;
+ }
+ 
+ .site-name{
+     color: var(--primary-color);
+     font-size: var(--font-size-lg);
+ }
+ 
+ .register-text-container,.register-card{
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+ 
+ .site-text{
+     font-size: var(--font-size-m);
+ }
+ .register-card{
+     display: flex;
+     flex-direction: column; 
+     justify-content: space-between;
+     padding: var(--padding-lg);
+     background-color: white;
+ }
+ 
+ .register-input{
+     padding: var(--padding-lg);
+     font-size: var(--font-size-s);
+     border-radius: 10px;
+     border: 1x solid;
+     outline: none;
+     margin-top: var(--margin-m);
+     height: 45px;
+ }
+ 
+ .register-button,.create-account-button{
+     padding: var(--padding-s);
+     font-size: var(--font-size-s);
+     margin-top: var(--margin-m);
+     margin-bottom: var(--margin-m);
+     color: white;
+     cursor: pointer;
+     border-radius: 10px;
+ 
+ }
+ 
+ .register-button{
+     background-color:var(--primary-color);
+ }
+ 
+ .create-account-button{
+     background-color:var(--secondary-color);
+ }
+ 
+ .register-forget-text{
+     cursor: pointer;
+ }

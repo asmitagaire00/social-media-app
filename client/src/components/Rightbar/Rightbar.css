@@ -1,0 +1,108 @@
+.rightbar{
+    flex: 3;
+}
+
+.rightbar-wrapper{
+    padding: 20px 20px 0px 40px;
+}
+
+.birthday-wrapper{
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--margin-m);
+}
+
+.birthday-emo{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: var(--margin-s);
+}
+
+.rightbar-online{
+    margin-top: var(--margin-m);
+}
+
+
+.rightbar-party-img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    
+}
+
+.online-profile-picture{
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.online-image-wrapper{
+    position: relative;
+
+}
+
+.online-dot-color{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgb(107, 170, 12);
+    position: absolute;
+    top: -2px;
+    right: 10px;
+    border: 1px solid white;
+}
+
+.online-item{
+    display: flex;
+    align-items: center;
+}
+
+.online-profile-picture{
+margin-right: var(--margin-s);
+}
+
+.profilerightbar-image-wrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.profilerighbar-user-images{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 8px; 
+    border: 1px solid;
+    margin: 0px;
+    padding: 0px;
+    /* padding-right: var(--padding-xs); */
+}
+
+img{
+    margin: 0px;
+    padding: 0px;
+}
+
+.profilerightbar-userfriends-profile-picture{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.userfriends-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userfriends-item{
+    display: flex;
+    flex-direction: column;
+    margin-right: var(--margin-m);
+    margin-bottom: var(--margin-s); 
+}
+
+.profilerightbar-userfriends-profile-picture{
+    border-radius: 8px;
+}

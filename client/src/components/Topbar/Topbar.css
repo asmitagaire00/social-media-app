@@ -1,0 +1,107 @@
+.topbar-container{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    top: 0;
+    position: sticky;
+    background-color: rgb(61, 61, 185);
+    z-index: 999;
+}
+
+.topbar-left{
+    flex:3;
+}
+
+.logo{
+    margin-left: var(--margin-m);
+    font-size: 25px;
+    cursor: pointer;
+    color:white;    
+
+}
+
+.search-bar{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.search-icon{
+    font-size: 25px !important;
+    margin-left: 10px;
+}
+
+.search-text{
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.topbar-center{
+    flex: 5;
+}
+
+.topbar-links-homepage,.topbar-links-timeline{
+    color:white;
+}
+
+.topbar-links-homepage{
+margin-right: var(--margin-m);
+}
+
+.topbar-right{
+    flex: 4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.topbar-icon{
+    display: flex;
+}
+
+.icon{
+    font-size: 25px !important;
+}
+
+.topbar-icon-item{
+    margin-right: 15px;
+    position: relative;
+    color:white;
+    cursor: pointer;
+
+}
+
+.topbar-icon-notify{
+    width: 15px;
+    height:15px;
+    font-size:14px;
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    color:white;
+
+}
+
+.topbar-icon-person,.topbar-icon-message{
+    margin-right: var(--margin-s);
+}
+
+.topbar-profile{
+    width: 40px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+

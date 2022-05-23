@@ -1,0 +1,87 @@
+.profilebar-wrapper{
+    padding-top: var(--padding-s);
+    padding-bottom: 0;
+    padding-left: 0; -webkit-box-shadow: -3px 6px 9px 0px #A5A5A5; 
+    box-shadow: -3px 6px 9px 0px #A5A5A5;
+}
+
+.profilebar-username-wrapper{
+    padding-left: var(--padding-m);
+    display: flex;
+    align-items: center;
+}
+
+.profilebar-arrow{
+    margin-right: var(--margin-m);
+    font-size: 2.5rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.profilebar-top-username-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.profilebar-cover-photo{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    padding-left: 0px;
+}
+
+.profilebar-image-container{
+    position: relative;
+}
+
+.profilebar-profile-picture{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid;
+    position: absolute;
+    left: 30px;
+    bottom: -25px;
+}
+
+.profilebar-edit-button{
+    position: absolute;
+    right: 30px;
+    bottom: -45px;
+    color: white;
+    color: white;
+    background-color:rgb(23, 23, 163);
+    font-size: var(--font-size-s);
+    padding: var(--padding-s);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.profilebar-image-container{
+    margin-bottom: var(--margin-xxl);
+}
+
+.profilebar-profile-details-wrapper{
+    padding-left: var(--padding-xl);
+    background-color: white;
+}
+
+.profilebar-username-details{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--margin-s);
+}
+
+.profilebar-following-wrapper{
+    padding-top: var(--margin-s);
+}
+
+.profile-followers, .profile-following{
+    cursor: pointer;
+}
+
+.profile-following{
+    margin-right: var(--margin-m);
+}
