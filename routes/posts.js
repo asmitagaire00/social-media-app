@@ -72,21 +72,38 @@ router.put("/:id/like", async(req,res)=>{
 })
 
 //get timeline post 
-router.get("/timeline/:userId", async(req, res)=>{
-    try{
-        const currentUser = await User.findById(req.params.userId);
-        const currentUserpost = await Post.find({userId:currentUser._id});
-        const friendPost = await currentUser.followings.map((userId)=>{
-            return Post.findById(userId);
-        })
-        console.log("followinglist",currentUserpost)
-        res.status(200).send({...currentUserpost, friendPost})
-    }
-    catch{
-        res.status(500).json({message:"Couldnot get timeline"})
-    }
+// router.get("/timeline/:userId", async(req, res)=>{
+//     try{
+//         const currentUser = await User.findById(req.params.userId);
+//         const currentUserpost = await Post.find({userId:currentUser._id});
+//         const friendPost = await currentUser.followings.map((userId)=>{
+//             return Post.findById(userId);
+//         })
+//         console.log("followinglist",currentUserpost)
+//         res.status(200).send([currentUserpost, ...friendPost])
+//     }
+//     catch(err){
+//         console.log("error occur", err);
+//         res.status(500).json({message:"Couldnot get timeline"})
+//     }
 
-})
+// })
+
+router.get("/timeline/:userId", async (req, res) => {
+    try {
+      const currentUser = await User.findById(req.params.userId);
+      const userPosts = await Post.find({ userId: currentUser._id });
+      const friendPosts = await Promise.all(
+        currentUser.followings.map((friendId) => {
+          return Post.find({ userId: friendId });
+        })
+      );
+      res.status(200).json(userPosts.concat(...friendPosts));
+    } catch (err) {
+        console.log("timeline error", err)
+        res.status(500).json(err);
+    }
+  });
 
 //get profile post
 router.get("/profile/:userId", async(req, res)=>{
