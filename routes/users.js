@@ -14,6 +14,19 @@ router.get("/:id" , async(req,res)=>{
     }
 })
 
+//post a user
+router.post("/", async(req,res)=>{
+    console.log("posting working");
+    try{
+        const newUser =new User(req.body);
+        await newUser.save();
+        res.status(200).json(newUser)
+    }
+    catch(err){
+        return res.status(500).json(err);
+    }
+})
+
 //update user
 router.put("/:id", async (req, res) => {
     if (req.body.userId === req.params.id || req.body.isAdmin) {

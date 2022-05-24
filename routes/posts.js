@@ -72,17 +72,33 @@ router.put("/:id/like", async(req,res)=>{
 })
 
 //get timeline post 
-// router.get("/timeline", async(req, res)=>{
-//     try{
-//         const currentUser = await User.findById(req.body.userId);
-//         // const userFollowingList = await currentUser.find(req.body.following)
-//         console.log("followinglist",currentUser)
-//     }
-//     catch{
-//         res.status(500).json({message:"Couldnot refresh feed"})
-//     }
+router.get("/timeline/:userId", async(req, res)=>{
+    try{
+        const currentUser = await User.findById(req.params.userId);
+        const currentUserpost = await Post.find({userId:currentUser._id});
+        const friendPost = await currentUser.followings.map((userId)=>{
+            return Post.findById(userId);
+        })
+        console.log("followinglist",currentUserpost)
+        res.status(200).send({...currentUserpost, friendPost})
+    }
+    catch{
+        res.status(500).json({message:"Couldnot get timeline"})
+    }
 
-// })
+})
+
+//get profile post
+router.get("/profile/:userId", async(req, res)=>{
+    try{
+        const currentUser = User.findById(req.params.userId);
+        const userPost = Post.find({userId:currentUser._id});
+        res.status(200).send(userPost)
+    }
+    catch(err){
+        res.status(403).json({message:"Couldnot get profile"})
+    }
+})
 
 module.exports = router;
 

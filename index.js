@@ -16,7 +16,7 @@ mongoose.connect(
     process.env.MONGO_URL,
     {useNewUrlParser:true},
   )
-  .then(()=>console.log('connected'))
+  .then(()=>console.log('mongoose connected'))
   .catch(e=>console.log(e));
 
 //middleware    

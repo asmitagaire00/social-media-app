@@ -47,6 +47,7 @@
 
 .topbar-links-homepage,.topbar-links-timeline{
     color:white;
+    cursor: pointer;
 }
 
 .topbar-links-homepage{
@@ -103,5 +104,6 @@ margin-right: var(--margin-m);
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
+    cursor: pointer;
 }
 
