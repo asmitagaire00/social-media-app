@@ -1,13 +1,16 @@
 import "./Rightbar.css";
 
 // eslint-disable-next-line react/prop-types
-export default function Rightbar({ profile }) {
+export default function Rightbar({ user }) {
+  // eslint-disable-next-line no-undef
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const HomeRightbar = () => {
     return (
       <div className="homerightbar">
         <div className="birthday-wrapper">
           <img
-            src="assets/birthday.jpg"
+            src={`${PF}birthday.jpg`}
             alt="birthday emo"
             className="birthday-emo"
           />
@@ -16,7 +19,7 @@ export default function Rightbar({ profile }) {
           </span>
         </div>
         <img
-          src="assets/rightbar-party.jpg"
+          src={`${PF}rightbar-party.jpg`}
           alt="party photo"
           className="rightbar-party-img"
         />
@@ -26,7 +29,7 @@ export default function Rightbar({ profile }) {
             <li className="online-item">
               <div className="online-image-wrapper">
                 <img
-                  src="assets/profile.jpg"
+                  src={`${PF}profile.jpg`}
                   alt="profile picture"
                   className="online-profile-picture"
                 />
@@ -37,7 +40,7 @@ export default function Rightbar({ profile }) {
             <li className="online-item">
               <div className="online-image-wrapper">
                 <img
-                  src="assets/profile.jpg"
+                  src={`${PF}profile.jpg`}
                   alt="profile picture"
                   className="online-profile-picture"
                 />
@@ -48,7 +51,7 @@ export default function Rightbar({ profile }) {
             <li className="online-item">
               <div className="online-image-wrapper">
                 <img
-                  src="assets/profile.jpg"
+                  src={`${PF}profile.jpg`}
                   alt="profile picture"
                   className="online-profile-picture"
                 />
@@ -67,22 +70,22 @@ export default function Rightbar({ profile }) {
       <div className="profilerightbar">
         <div className="profilerightbar-image-wrapper">
           <img
-            src="assets/birthday.jpg"
+            src={`${PF}birthday.jpg`}
             alt="images"
             className="profilerighbar-user-images"
           />
           <img
-            src="assets/birthday.jpg"
+            src={`${PF}birthday.jpg`}
             alt="images"
             className="profilerighbar-user-images"
           />
           <img
-            src="assets/birthday.jpg"
+            src={`${PF}birthday.jpg`}
             alt="images"
             className="profilerighbar-user-images"
           />
           <img
-            src="assets/birthday.jpg"
+            src={`${PF}birthday.jpg`}
             alt="images"
             className="profilerighbar-user-images"
           />
@@ -94,7 +97,7 @@ export default function Rightbar({ profile }) {
           <div className="userfriends-wrapper">
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -102,7 +105,7 @@ export default function Rightbar({ profile }) {
             </div>
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -110,7 +113,7 @@ export default function Rightbar({ profile }) {
             </div>
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -118,7 +121,7 @@ export default function Rightbar({ profile }) {
             </div>
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -126,7 +129,7 @@ export default function Rightbar({ profile }) {
             </div>
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -134,7 +137,7 @@ export default function Rightbar({ profile }) {
             </div>
             <div className="userfriends-item">
               <img
-                src="assets/profile.jpg"
+                src={`${PF}profile.jpg`}
                 alt="image"
                 className="profilerightbar-userfriends-profile-picture"
               />
@@ -149,8 +152,12 @@ export default function Rightbar({ profile }) {
   return (
     <div className="rightbar">
       <div className="rightbar-wrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   );
 }
+
+// Profilebar.propTypes = {
+//   user: PropTypes.object,
+// };

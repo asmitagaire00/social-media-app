@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import "./Topbar.css";
 
 export default function Topbar() {
+  // eslint-disable-next-line no-undef
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="topbar-container">
       <div className="topbar-left">
-        <p className="logo">Social</p>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <p className="logo">Social</p>
+        </Link>
       </div>
       <div className="topbar-center">
         <div className="search-bar">
@@ -20,10 +25,10 @@ export default function Topbar() {
       </div>
       <div className="topbar-right">
         <div className="topbar-links">
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none" }}>
             <span className="topbar-links-homepage">Homepage</span>
           </Link>
-          <Link to="profile/:username">
+          <Link to="profile/:username" style={{ textDecoration: "none" }}>
             <span className="topbar-links-timeline">Timeline</span>
           </Link>
         </div>
@@ -44,7 +49,7 @@ export default function Topbar() {
         <div className="topbar-profile">
           <Link to="profile/:username">
             <img
-              src="assets/profile.jpg"
+              src={`${PF}profile.jpg`}
               alt="profile picture"
               className="topbar-profile"
             />

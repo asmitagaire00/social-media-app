@@ -62,6 +62,7 @@
 
 .online-profile-picture{
 margin-right: var(--margin-s);
+cursor: pointer;
 }
 
 .profilerightbar-image-wrapper{
