@@ -157,7 +157,3 @@ export default function Rightbar({ user }) {
     </div>
   );
 }
-
-// Profilebar.propTypes = {
-//   user: PropTypes.object,
-// };
