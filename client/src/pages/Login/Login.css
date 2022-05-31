@@ -13,7 +13,7 @@ width: 60%;
 
 .site-name{
     color: var(--primary-color);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
 }
 
 .login-text-container,.login-card{
@@ -45,8 +45,11 @@ width: 60%;
 }
 
 .login-button,.create-account-button{
-    padding: var(--padding-s);
-    font-size: var(--font-size-s);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: var(--padding-s);
+    padding-right: var(--padding-s);
+    font-size: 1.8rem;
     margin-top: var(--margin-m);
     margin-bottom: var(--margin-m);
     color: white;
