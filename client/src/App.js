@@ -5,23 +5,29 @@ import Login from "./pages/Login/Login";
 import "./App.css";
 import "./global.css";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { LoginContext } from "./context/LoginContext";
+import { useContext } from "react";
 
 export default function App() {
+  const { user } = useContext(LoginContext);
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {user ? <Home /> : <Register />}
         </Route>
         <Route path="/profile/:username">
           <Profile />
         </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
-          <Register />
+          {user ? <Redirect to="/" /> : <Register />}
         </Route>
       </Switch>
     </Router>

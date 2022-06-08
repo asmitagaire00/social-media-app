@@ -3,23 +3,23 @@ const LoginReducer = (state, action) => {
     case "LOGIN_START":
       return {
         user: null,
-        isFetching: !state.isFetching,
-        error: state.error,
+        isFetching: true,
+        error: false,
       };
     case "LOGIN_SUCCESS":
       return {
-        user: action.payload.user,
-        isFetching: state.isFetching,
-        error: state.error,
+        user: action.payload,
+        isFetching: false,
+        error: true,
       };
     case "LOGIN_FAILURE":
       return {
         user: null,
-        isFetching: state.isFetching,
-        error: !state.error,
+        isFetching: false,
+        error: action.payload,
       };
     default:
-      state;
+      return state;
   }
 };
 
