@@ -1,10 +1,13 @@
 import { Message, Person, Search, Notifications } from "@mui/icons-material";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../../context/LoginContext";
 import "./Topbar.css";
 
 export default function Topbar() {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(LoginContext);
 
   return (
     <div className="topbar-container">
@@ -47,7 +50,7 @@ export default function Topbar() {
           </div>
         </div>
         <div className="topbar-profile">
-          <Link to="profile/:username">
+          <Link to={`profile/${user.username}`}>
             <img
               src={`${PF}profile.jpg`}
               alt="profile picture"
