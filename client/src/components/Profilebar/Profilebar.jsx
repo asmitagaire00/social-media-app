@@ -1,12 +1,14 @@
 import { ArrowBack } from "@mui/icons-material";
-
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Profilebar.css";
+import { useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
-export default function Profilebar({ user }) {
+export default function Profilebar() {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(LoginContext);
 
   return (
     <div className="profilebar">

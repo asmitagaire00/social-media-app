@@ -52,7 +52,7 @@ router.delete('/:id', async(req,res)=>{
     }
 })
 
-//like a post
+//like a post (:id means post id)
 router.put("/:id/like", async(req,res)=>{
     try{
         const post = await Post.findById(req.params.id)
@@ -71,24 +71,7 @@ router.put("/:id/like", async(req,res)=>{
     }
 })
 
-//get timeline post 
-// router.get("/timeline/:userId", async(req, res)=>{
-//     try{
-//         const currentUser = await User.findById(req.params.userId);
-//         const currentUserpost = await Post.find({userId:currentUser._id});
-//         const friendPost = await currentUser.followings.map((userId)=>{
-//             return Post.findById(userId);
-//         })
-//         console.log("followinglist",currentUserpost)
-//         res.status(200).send([currentUserpost, ...friendPost])
-//     }
-//     catch(err){
-//         console.log("error occur", err);
-//         res.status(500).json({message:"Couldnot get timeline"})
-//     }
-
-// })
-
+//get post of all following user
 router.get("/timeline/:userId", async (req, res) => {
     try {
       const currentUser = await User.findById(req.params.userId);

@@ -1,22 +1,23 @@
 import Post from "../Post/Post";
 import axios from "axios";
 import "./Feed.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Proptypes from "prop-types";
+import { LoginContext } from "../../context/LoginContext";
 
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
     async function fetchPost() {
       const response = username
         ? await axios.get("/posts/profile/" + username)
-        : await axios.get("/posts/timeline/628c19d188c621a89e9f8a71");
-      // console.log("timeline data", response.data);
+        : await axios.get("/posts/timeline/" + user._id);
       setPosts(response.data);
     }
     fetchPost();
-  }, [username]);
+  }, [username, user.id]);
 
   return (
     <div className="feed">

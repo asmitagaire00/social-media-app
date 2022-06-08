@@ -1,6 +1,7 @@
 import "./Post.css";
 import { MoreVertSharp, ThumbUpSharp, Favorite } from "@mui/icons-material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { format } from "timeago.js";
@@ -13,8 +14,18 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isliked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const { user: currenUser } = useContext(LoginContext);
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currenUser._id));
+  }, [currenUser._id, post.likes]);
 
   const handleLikeButton = (e) => {
+    try {
+      axios.put("/posts/" + post._id + "/like", currenUser._id);
+    } catch (err) {
+      console.log("error in like button", err);
+    }
     e.preventDefault();
     setLike(isliked ? like - 1 : like + 1);
     setIsLiked(!isliked);
@@ -23,7 +34,6 @@ export default function Post({ post }) {
   useEffect(() => {
     async function fetchUser() {
       const response = await axios.get(`/users?userId=${post.userId}`);
-      // console.log("users data", response.data);
       setUser(response.data);
     }
     fetchUser();

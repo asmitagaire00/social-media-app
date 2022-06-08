@@ -11,18 +11,6 @@ export default function Share() {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  // const [sharingInput, setSharingInput] = useState("");
-
-  // const handleInputChange = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.value);
-  //   setSharingInput(e.target.value);
-  // };
-
-  // const handleSharingInput = () => {
-
-  // };
-
   return (
     <div className="share">
       <div className="share-wrapper">
@@ -36,7 +24,6 @@ export default function Share() {
             type="text"
             placeholder="What's happening.."
             className="share-top-input"
-            // onChange={handleInputChange}
           />
         </div>
         <hr className="shareHr" />
@@ -67,5 +54,3 @@ export default function Share() {
     </div>
   );
 }
-
-// onClick={handleSharingInput}
