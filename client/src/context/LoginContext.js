@@ -40,5 +40,8 @@ export default function LoginContextProvider({ children }) {
 }
 
 LoginContextProvider.propTypes = {
-  children: PropTypes.children,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };

@@ -31,7 +31,10 @@ export default function Topbar() {
           <Link to="/" style={{ textDecoration: "none" }}>
             <span className="topbar-links-homepage">Homepage</span>
           </Link>
-          <Link to="profile/:username" style={{ textDecoration: "none" }}>
+          <Link
+            to={`profile/${user.username}`}
+            style={{ textDecoration: "none" }}
+          >
             <span className="topbar-links-timeline">Timeline</span>
           </Link>
         </div>
@@ -52,7 +55,11 @@ export default function Topbar() {
         <div className="topbar-profile">
           <Link to={`profile/${user.username}`}>
             <img
-              src={`${PF}profile.jpg`}
+              src={
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "noavatar.jpeg"
+              }
               alt="profile picture"
               className="topbar-profile"
             />

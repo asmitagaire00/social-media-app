@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 export default function Post({ post }) {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  console.log("img details", post);
 
   const [like, setLike] = useState(post.likes.length);
   const [isliked, setIsLiked] = useState(false);
@@ -39,15 +40,23 @@ export default function Post({ post }) {
     fetchUser();
   }, [post.userId]);
 
+  const handleComment = () => {
+    console.log("comment box clicked");
+  };
+
   return (
     <div className="post">
       <div className="post-wrapper">
         <div className="post-top">
           <div className="post-left">
-            <Link to="/profile">
+            <Link to={`/profile/${user.username}`}>
               <img
-                src={`${PF}profile.jpg`}
-                alt="image"
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "noavatar.jpeg"
+                }
+                alt=""
                 className="post-left-profile"
               />
             </Link>
@@ -63,8 +72,8 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className="post-center">
-          <span className="post-center-text">{post.desc}</span>
-          <img src={`${PF}profile.jpg`} alt="image" className="post-images" />
+          <span className="post-center-text">{post?.desc}</span>
+          <img src={PF + post.img} alt="" className="post-images" />
         </div>
         <div className="post-bottom">
           <div className="post-bottom-left">
@@ -76,7 +85,7 @@ export default function Post({ post }) {
             <span className="post-like">{like} People likes </span>
           </div>
           <div className="post-bottom-right">
-            <span>{post.comments.length} comments</span>
+            <span onClick={handleComment}>{post.comments.length} comments</span>
           </div>
         </div>
       </div>

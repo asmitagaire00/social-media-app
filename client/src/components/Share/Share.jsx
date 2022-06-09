@@ -5,9 +5,31 @@ import {
   AddLocationRounded,
   EmojiEmotionsRounded,
 } from "@mui/icons-material";
-// import { useState } from "react";
+import axios from "axios";
+import { useContext, useRef, useState } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
 export default function Share() {
+  const [file, setFile] = useState(null);
+  const desc = useRef();
+  const { user } = useContext(LoginContext);
+
+  const handleShareSubmit = async (e) => {
+    console.log("myfile", file, desc.current.value);
+    e.preventDefault();
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    };
+    try {
+      await axios.post("/posts", newPost);
+      console.log("newpost", newPost);
+    } catch (err) {
+      console.log("couldnot post from Share", err);
+    }
+    desc.current.value = "";
+    window.location.reload();
+  };
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -16,23 +38,34 @@ export default function Share() {
       <div className="share-wrapper">
         <div className="share-top">
           <img
-            src={`${PF}profile.jpg`}
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + "noavatar.jpeg"
+            }
             alt="profile-picture"
             className="share-top-image"
           />
           <input
             type="text"
-            placeholder="What's happening.."
+            placeholder={"What's happening " + user.username + "?"}
             className="share-top-input"
+            ref={desc}
           />
         </div>
         <hr className="shareHr" />
-        <div className="share-bottom">
+        <form className="share-bottom" onSubmit={handleShareSubmit}>
           <div className="share-bottom-left">
-            <div className="share-bottom-item">
+            <label htmlFor="myfile" className="share-bottom-item">
               <AddAPhoto className="share-bottom-icon" />
               <span className="share-bottom-item-text">Photo/Video</span>
-            </div>
+              <input
+                type="file"
+                id="myfile"
+                accept=".jpg, .jpeg, .png, .webp"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
             <div className="share-bottom-item">
               <Label className="share-bottom-icon" />
               <span className="share-bottom-item-text">Tag</span>
@@ -47,9 +80,11 @@ export default function Share() {
             </div>
           </div>
           <div className="share-bottom-right">
-            <button className="share-button">Share</button>
+            <button className="share-button" type="submit">
+              Share
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

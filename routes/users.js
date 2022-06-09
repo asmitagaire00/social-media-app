@@ -12,6 +12,7 @@ router.get("/" , async(req,res)=>{
         res.status(200).json(user);
     }
     catch(err){
+        console.log("couln't get users : users.js",err)
        return res.status(500).json(err);
     }
 })
@@ -116,6 +117,22 @@ router.put("/:id/unfollow", async(req,res)=>{
     else{
         res.status(403).json("You cannot unfollow yourself!")
     }
+})
+
+//get user's friend
+router.get("/friends/:userId", async(req,res)=>{
+    try{
+        const user= await User.findById(req.params.userId);
+        const friends = await Promise.all(user.followings.map((friendId)=>{
+            return User.findById(friendId)
+        }))
+        const friendList=[];
+        friends.map((friend)=>{
+            const{_id,username,profilePicture}= friend;
+            friendList.push({_id,username,profilePicture})
+        });
+        res.status(200).json(friendList)
+    }catch(err){console.log("error occured in friends get request",err)}
 })
 
 module.exports = router;

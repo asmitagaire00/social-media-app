@@ -2,13 +2,10 @@ import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./Profilebar.css";
-import { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
 
-export default function Profilebar() {
+export default function Profilebar({ user }) {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user } = useContext(LoginContext);
 
   return (
     <div className="profilebar">
@@ -31,7 +28,11 @@ export default function Profilebar() {
             className="profilebar-cover-photo"
           />
           <img
-            src={`${PF}profile.jpg`}
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + "noavatar.jpeg"
+            }
             alt="profile-picture"
             className="profilebar-profile-picture"
           />
@@ -49,10 +50,10 @@ export default function Profilebar() {
           </span>
           <div className="profilebar-following-wrapper">
             <span className="profile-following">
-              <b>{user.followings}</b> Following
+              <b>{user?.followings?.length}</b> Following
             </span>
             <span className="profile-followers">
-              <b>{user.followers}</b> Followers
+              <b>{user?.followers?.length}</b> Followers
             </span>
           </div>
         </div>

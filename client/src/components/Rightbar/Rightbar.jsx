@@ -1,9 +1,27 @@
 import "./Rightbar.css";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
 
 // eslint-disable-next-line react/prop-types
 export default function Rightbar({ user }) {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [friends, setFriends] = useState([]);
+
+  console.log("user", user);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get("/users/friends/" + user?._id);
+        setFriends(friendList.data);
+      } catch (err) {
+        console.log("error in getFriends", err);
+      }
+    };
+    getFriends();
+  }, [user]);
 
   const HomeRightbar = () => {
     return (
@@ -79,70 +97,25 @@ export default function Rightbar({ user }) {
             alt="images"
             className="profilerighbar-user-images"
           />
-          <img
-            src={`${PF}birthday.jpg`}
-            alt="images"
-            className="profilerighbar-user-images"
-          />
-          <img
-            src={`${PF}birthday.jpg`}
-            alt="images"
-            className="profilerighbar-user-images"
-          />
         </div>
         <div className="profilerightbar-user-userfriends">
           <span className="userfriends">
             <b>User Friends</b>
           </span>
           <div className="userfriends-wrapper">
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
-            <div className="userfriends-item">
-              <img
-                src={`${PF}profile.jpg`}
-                alt="image"
-                className="profilerightbar-userfriends-profile-picture"
-              />
-              <span>User name</span>
-            </div>
+            {friends.map((friend) => {
+              <div className="userfriends-item">
+                <img
+                  src={
+                    friend.profilePicture
+                      ? PF + friend.profilePicture
+                      : PF + "noavatar.jpeg"
+                  }
+                  alt=""
+                />
+                <span>{friend.username}</span>
+              </div>;
+            })}
           </div>
         </div>
       </div>
@@ -157,3 +130,7 @@ export default function Rightbar({ user }) {
     </div>
   );
 }
+
+Rightbar.propTypes = {
+  user: PropTypes.object,
+};

@@ -7,18 +7,18 @@ import Profilebar from "../../components/Profilebar/Profilebar";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./Profile.css";
+import { useParams } from "react-router-dom";
 
 export default function Profile() {
   const [user, setUser] = useState({});
-
+  const username = useParams().username;
   useEffect(() => {
     async function fetchUser() {
-      const response = await axios.get(`/users?username=Ram`);
-      // console.log("users data", response.data);
+      const response = await axios.get(`/users?username=${username}`);
       setUser(response.data);
     }
     fetchUser();
-  }, []);
+  }, [username]);
 
   return (
     <div>
@@ -27,9 +27,9 @@ export default function Profile() {
         <Leftbar />
         <div className="profile-feed-container">
           <Profilebar user={user} />
-          <Feed username="Ram" />
+          <Feed username={username} />
         </div>
-        <Rightbar profile />
+        <Rightbar user={user} />
       </div>
     </div>
   );

@@ -46,8 +46,13 @@
     justify-content: space-around;
 }
 
+#myfile{
+    display: none;
+}
+
 .share-bottom-item{
     margin-right: var(--margin-s);
+    cursor: pointer;
 }
 .share-bottom-icon{
     margin-right: var(--margin-xs);

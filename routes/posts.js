@@ -10,6 +10,7 @@ router.post('/', async(req,res)=>{
         await newPost.save();
         res.status(200).json(newPost);
     }catch(err){
+        console.log("Couldnot create post", err)
         res.status(403).json({message: 'Couldnot create post'});
     }
   })
