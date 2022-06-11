@@ -21,14 +21,27 @@ export default function Share() {
       userId: user._id,
       desc: desc.current.value,
     };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      try {
+        await axios.post("/upload", data);
+      } catch (err) {
+        console.log("error in data", err);
+      }
+    }
+
     try {
+      console.log("newPost from share component", newPost);
       await axios.post("/posts", newPost);
-      console.log("newpost", newPost);
+      window.location.reload();
     } catch (err) {
       console.log("couldnot post from Share", err);
     }
     desc.current.value = "";
-    window.location.reload();
   };
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -54,7 +67,11 @@ export default function Share() {
           />
         </div>
         <hr className="shareHr" />
-        <form className="share-bottom" onSubmit={handleShareSubmit}>
+        <form
+          action="/upload"
+          onSubmit={handleShareSubmit}
+          className="share-bottom"
+        >
           <div className="share-bottom-left">
             <label htmlFor="myfile" className="share-bottom-item">
               <AddAPhoto className="share-bottom-icon" />
