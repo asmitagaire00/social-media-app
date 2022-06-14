@@ -3,5 +3,6 @@
     width: 100%;
 }
 .profile-feed-container{
-    flex: 4.5;
+    display: flex;
+    flex-direction: column;
 }

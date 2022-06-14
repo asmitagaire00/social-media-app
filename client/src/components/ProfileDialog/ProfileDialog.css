@@ -1,0 +1,39 @@
+.dialog-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dialog-bottom-item{
+    position:relative;
+    transition:0.2s all ease-in
+}
+
+.dialog-bottom-input{
+    padding: var(--padding-m);
+    margin-bottom: var(--margin-m);
+    background-color: black;
+    color: white;
+    outline-offset: 0;
+    outline-style: blue;
+    width: 100%;
+    font-size: var(--font-size-s);
+    display: block;
+    transition: 0.2s all ease-in;
+    }
+
+.dialog-bottom-input-label{
+    position:absolute;
+    left:10px;
+    top:15px;
+    color: white;
+    transition: 0.2s all ease-in;
+}
+
+
+.dialog-bottom-input:focus ~.dialog-bottom-input-label,
+.dialog-bottom-input:valid ~.dialog-bottom-input-label
+{
+    top:-4px;
+    font-size: 15px;
+  }

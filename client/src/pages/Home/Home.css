@@ -1,11 +1,9 @@
-.home{
-}
+
 .home-container{
     display: flex;
     width: 100%;
 }
 
 .home-feed-container{
-    flex:4.5
-
+flex: 4.5;
 }

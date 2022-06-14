@@ -1,0 +1,53 @@
+.dialog {
+    position: fixed; 
+    z-index: 99; 
+    left: 20%;
+    top: 150px;
+    overflow: auto;
+    background-color: black; 
+    width: 50%;
+    max-width: 100%;
+    min-height: 50vh;
+   margin: auto;
+  }
+  
+.dialog--hide{
+    display: none;
+}
+
+.dialog__title{
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-s);
+  background-color: black;
+
+}
+
+.dialog-profile-edit-text{
+  color: white;
+  margin-left: var(--margin-m);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+}
+
+.dialog-close-button{
+  margin-right: var(--margin-m);
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.save-button{
+  font-size: var(--font-size-s);
+  padding-top: var(--padding-s);
+  padding-bottom: var(--padding-s);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}

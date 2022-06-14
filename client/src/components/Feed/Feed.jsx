@@ -4,6 +4,7 @@ import "./Feed.css";
 import { useState, useEffect, useContext } from "react";
 import Proptypes from "prop-types";
 import { LoginContext } from "../../context/LoginContext";
+import Share from "../../components/Share/Share";
 
 export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
@@ -26,6 +27,7 @@ export default function Feed({ username }) {
   return (
     <div className="feed">
       <div className="feed-container">
+        {username === user.username && <Share />}
         {posts.map((post) => {
           return <Post key={post._id} post={post} />;
         })}

@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 export default function Post({ post }) {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log("img details", post);
 
   const [like, setLike] = useState(post.likes.length);
   const [isliked, setIsLiked] = useState(false);
@@ -72,8 +71,10 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className="post-center">
-          <span className="post-center-text">{post?.desc}</span>
-          <img src={PF + post.img} alt="" className="post-images" />
+          <div className="post-center-text">{post?.desc}</div>
+          {post.img && (
+            <img src={PF + post.img} alt="" className="post-images" />
+          )}
         </div>
         <div className="post-bottom">
           <div className="post-bottom-left">

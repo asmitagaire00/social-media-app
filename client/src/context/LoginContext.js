@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 const USER_INITIAL_STATE = {
   user: {
     _id: "628c19d188c621a89e9f8a71",
-    username: "Ram",
-    email: "ram@gmail.com",
+    username: "Aavya",
+    email: "aavya@gmail.com",
     password: "hello",
     profilePicture: "",
     coverPicture: "",

@@ -41,16 +41,17 @@ router.put("/:id", async (req, res) => {
           return res.status(500).json(err);
         }
       }
+
       try {
         const user = await User.findByIdAndUpdate(req.params.id, {
           $set: req.body,
         });
-        res.status(200).json("Account has been updated");
+        res.status(200).json(user);
       } catch (err) {
-        return res.status(500).json(err);
+        return res.status(500).json({message:"Account couldnot update"},err);
       }
     } else {
-      return res.status(403).json("You can update only your account!");
+      return res.status(403).json({message:"You can update only your account!"});
     }
   });
 
@@ -62,13 +63,14 @@ router.delete("/:id", async(req, res)=>{
             res.status(200).json("Account has been deleted.")
         }
         catch(err){
-           return res.status(500).json(err);
+           return res.status(500).json({message:"Account couldnot delete"},err);
         }
     }
     else{
-        return res.status(403).json("You can only delete your account.")
+        return res.status(403).json({message:"You can only delete your account."})
     }
 })
+
 
 //follow user
 router.put("/:id/follow", async(req,res)=>{
@@ -79,18 +81,19 @@ router.put("/:id/follow", async(req,res)=>{
            if(!user.followers.includes(req.body.userId)){
                  await user.updateOne({$push:{followers:req.body.userId}});
                  await currentUser.updateOne({$push:{followings:req.params.id}})
-                 res.status(200).json("user had been followed")
+                 res.status(200).json({message:"user had been followed"})
            }
            else{
-               res.status(403).json("Already following")
+               res.status(403).json({message:"Already following"})
            }
         }
         catch(err){
-            res.status(500).json(err);
+            console.log("error occured in follow request")
+            res.status(500).json({message:"error occured in follow request"},err);
         }
     }
     else{
-        res.status(403).json("You cannot follow yourself")
+        res.status(403).json({message:"You cannot follow yourself"})
     }
 })
 
@@ -104,18 +107,18 @@ router.put("/:id/unfollow", async(req,res)=>{
             if(user.followers.includes(req.body.userId)){
                 await user.updateOne({$pull:{followers: req.body.userId}});
                 await currentUser.updateOne({$pull:{following: req.params.id}});
-                res.status(200).json("user has been unfollowed")
+                res.status(200).json({message:"user has been unfollowed"})
 
             }else{
-                res.status(403).json("Not following")
+                res.status(403).json({message:"Not following"})
             }
         }
         catch(err){
-            res.status(500).json(err);
+            res.status(500).json({message:"error occured in unfollow api"},err);
         }
     }
     else{
-        res.status(403).json("You cannot unfollow yourself!")
+        res.status(403).json({message:"You cannot unfollow yourself!"})
     }
 })
 

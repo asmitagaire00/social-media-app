@@ -1,15 +1,16 @@
 import "./Rightbar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { LoginContext } from "../../context/LoginContext";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export default function Rightbar({ user }) {
+export default function Rightbar() {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
-
-  console.log("user", user);
+  const { user } = useContext(LoginContext);
 
   useEffect(() => {
     const getFriends = async () => {
@@ -104,17 +105,23 @@ export default function Rightbar({ user }) {
           </span>
           <div className="userfriends-wrapper">
             {friends.map((friend) => {
-              <div className="userfriends-item">
-                <img
-                  src={
-                    friend.profilePicture
-                      ? PF + friend.profilePicture
-                      : PF + "noavatar.jpeg"
-                  }
-                  alt=""
-                />
-                <span>{friend.username}</span>
-              </div>;
+              <Link
+                to={"/profile/" + friend.username}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="userfriends-item">
+                  <img
+                    src={
+                      friend.profilePicture
+                        ? PF + friend.profilePicture
+                        : PF + "noavatar.jpeg"
+                    }
+                    alt=""
+                  />
+                  <span>{friend.username}</span>
+                </div>
+                ;
+              </Link>;
             })}
           </div>
         </div>

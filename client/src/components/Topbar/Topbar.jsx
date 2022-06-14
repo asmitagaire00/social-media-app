@@ -53,7 +53,7 @@ export default function Topbar() {
           </div>
         </div>
         <div className="topbar-profile">
-          <Link to={`profile/${user.username}`}>
+          <Link to={`/profile/${user.username}`}>
             <img
               src={
                 user.profilePicture

@@ -97,7 +97,7 @@ router.get("/profile/:username", async(req, res)=>{
         res.status(200).send(userPost)
     }
     catch(err){
-        res.status(403).json({message:"Couldnot get profile"})
+        res.status(403).json({message:"Couldnot get profile"},err)
     }
 })
 
