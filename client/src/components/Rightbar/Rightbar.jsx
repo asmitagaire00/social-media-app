@@ -6,23 +6,25 @@ import { LoginContext } from "../../context/LoginContext";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export default function Rightbar() {
+export default function Rightbar({ user }) {
   // eslint-disable-next-line no-undef
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
-  const { user } = useContext(LoginContext);
+  const { user: currentUser } = useContext(LoginContext);
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user?._id);
+        const friendList = await axios.get(
+          "/users/friends/" + currentUser?._id
+        );
         setFriends(friendList.data);
       } catch (err) {
         console.log("error in getFriends", err);
       }
     };
     getFriends();
-  }, [user]);
+  }, [currentUser]);
 
   const HomeRightbar = () => {
     return (
