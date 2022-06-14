@@ -4,6 +4,7 @@ import {
   Label,
   AddLocationRounded,
   EmojiEmotionsRounded,
+  Cancel,
 } from "@mui/icons-material";
 import axios from "axios";
 import { useContext, useRef, useState } from "react";
@@ -67,6 +68,12 @@ export default function Share() {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
         <form
           action="/upload"
           onSubmit={handleShareSubmit}

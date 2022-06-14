@@ -24,7 +24,6 @@ export default function Profilebar({ user }) {
   const username = useRef();
   const desc = useRef();
   const city = useRef();
-  console.log("username", username);
 
   const handleClose = (val) => {
     setEditProfileDialogOpen(val);
@@ -52,7 +51,6 @@ export default function Profilebar({ user }) {
       console.log("error in handlefollowbutton", err);
     }
     setIsFollowing(!isFollowing);
-    console.log("is following");
   };
 
   return (

@@ -67,3 +67,23 @@ padding: var(--padding-xs);
 border-radius: 8px;
 cursor: pointer;
 }
+
+.shareImgContainer{
+    padding: 0 20px 10px 20px;
+    position: relative;
+  }
+  
+  .shareImg{
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .shareCancelImg{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    cursor: pointer;
+    font-size:3.5rem ;
+    background-color: black;
+    color: white;
+  }
